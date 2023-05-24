@@ -2,11 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sort Without Articles</title>
+    <link rel="icon" href="https://fav.farm/✅" />
     <link rel="stylesheet" href="./style.css" />
-    <link rel="icon" href="https://fav.farm/🔥" />
   </head>
   <body>
     <ul id="bands"></ul>
@@ -27,6 +25,18 @@
         "Anywhere But Here",
         "An Old Dog",
       ];
+
+      function strip(bandName) {
+        return bandName.replace(/^(a |the |an )/i, "").trim();
+      }
+
+      const sortedBands = bands.sort((a, b) => (strip(a) > strip(b) ? 1 : -1));
+
+      document.querySelector("#bands").innerHTML = sortedBands
+        .map((band) => `<li>${band}</li>`)
+        .join("");
+
+      console.log(sortedBands);
     </script>
   </body>
 </html>
